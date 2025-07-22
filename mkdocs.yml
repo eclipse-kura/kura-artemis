@@ -1,5 +1,5 @@
-site_name: Eclipse Kura™ Apache ActiveMQ Artemis MQTT broker
-site_url: 'https://eclipse-kura.github.io/kura/'
+site_name: Eclipse Kura™ Apache ActiveMQ Artemis MQTT broker documentation
+site_url: 'https://eclipse-kura.github.io/kura-artemis'
 
 nav:
     - Simple Artemis MQTT Broker: simple-artemis-mqtt-broker.md
