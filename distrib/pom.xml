@@ -87,11 +87,11 @@
 
         <artemis-mqtt-protocol.jar.name>artemis-mqtt-protocol-${org.apache.activemq.artemis.upstream.version}.jar</artemis-mqtt-protocol.jar.name>
         <artemis-native.jar.name>artemis-native-${org.apache.activemq.artemis.upstream.version}.jar</artemis-native.jar.name>
-        <jboss-logging.jar.name>jboss-logging-${org.jboss.logging.version}.jar</jboss-logging.jar.name>
-        <geronimo-json_1.0_spec.jar.name>geronimo-json_1.0_spec-${org.apache.geronimo.specs.json.version}.jar</geronimo-json_1.0_spec.jar.name>
-        <geronimo-jta_1.1_spec.jar.name>geronimo-jta_1.1_spec-${org.apache.geronimo.specs.jta.version}.jar</geronimo-jta_1.1_spec.jar.name>
-        <commons-beanutils.jar.name>commons-beanutils-${commons-beanutils.version}.jar</commons-beanutils.jar.name>
-        <commons-collections.jar.name>commons-collections-${commons-collections.version}.jar</commons-collections.jar.name>
+        <jboss-logging.jar.name>jboss-logging-${jboss.logging.version}.jar</jboss-logging.jar.name>
+        <geronimo-json_1.0_spec.jar.name>geronimo-json_1.0_spec-${geronimo.json.version}.jar</geronimo-json_1.0_spec.jar.name>
+        <geronimo-jta_1.1_spec.jar.name>geronimo-jta_1.1_spec-${geronimo.jta.version}.jar</geronimo-jta_1.1_spec.jar.name>
+        <commons-beanutils.jar.name>commons-beanutils-${commons.beanutils.version}.jar</commons-beanutils.jar.name>
+        <commons-collections.jar.name>commons-collections-${commons.collections.version}.jar</commons-collections.jar.name>
         
         <org.apache.activemq.artemis.jar.name>org.apache.activemq.artemis-${org.apache.activemq.artemis.kura.wrapper.version}.jar</org.apache.activemq.artemis.jar.name>
         <org.eclipse.kura.broker.artemis.core.jar.name>org.eclipse.kura.broker.artemis.core-${org.eclipse.kura.broker.artemis.core.version}.jar</org.eclipse.kura.broker.artemis.core.jar.name>

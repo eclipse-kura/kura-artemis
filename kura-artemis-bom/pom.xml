@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2025 Eurotech and/or its affiliates and others
+
+    This program and the accompanying materials are made
+    available under the terms of the Eclipse Public License 2.0
+    which is available at https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+     Eurotech
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.eclipse.kura</groupId>
+        <artifactId>kura-artemis</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.eclipse.kura</groupId>
+    <artifactId>kura-artemis-bom</artifactId>
+
+    <packaging>pom</packaging>
+    <name>Kura Artemis BOM</name>
+
+    <distributionManagement>
+        <repository>
+            <id>repo.eclipse.org</id>
+            <name>Kura Repository - Releases</name>
+            <url>https://repo.eclipse.org/content/repositories/kura-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>repo.eclipse.org</id>
+            <name>Kura Repository - Snapshots</name>
+            <url>https://repo.eclipse.org/content/repositories/kura-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- External deps that are not OSGi bundles, that will be wrapped by our bundle -->
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-server</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-commons</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-core-client</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-jms-client</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-jms-server</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-journal</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-selector</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-service-extensions</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <!-- External deps that are OSGi bundles, that do not need wrapping in an eclipse kura
+            bundle -->
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-mqtt-protocol</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-native</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>${jboss.logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-json_1.0_spec</artifactId>
+                <version>${geronimo.json.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-jta_1.1_spec</artifactId>
+                <version>${geronimo.jta.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons.beanutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons.collections.version}</version>
+            </dependency>
+            <!-- External deps in common with Camel, available in kura-target-platform -->
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-jms_2.0_spec</artifactId>
+                <version>${geronimo.jms.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- This project's bundles -->
+            <dependency>
+                <groupId>org.eclipse.kura</groupId>
+                <artifactId>org.apache.activemq.artemis</artifactId>
+                <version>${org.apache.activemq.artemis.kura.wrapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.kura</groupId>
+                <artifactId>org.eclipse.kura.broker.artemis.core</artifactId>
+                <version>${org.eclipse.kura.broker.artemis.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.kura</groupId>
+                <artifactId>org.eclipse.kura.broker.artemis.simple.mqtt</artifactId>
+                <version>${org.eclipse.kura.broker.artemis.simple.mqtt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.kura</groupId>
+                <artifactId>org.eclipse.kura.broker.artemis.xml</artifactId>
+                <version>${org.eclipse.kura.broker.artemis.xml.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-mqtt-protocol</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-native</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-json_1.0_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jta_1.1_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.kura</groupId>
+            <artifactId>org.apache.activemq.artemis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.kura</groupId>
+            <artifactId>org.eclipse.kura.broker.artemis.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.kura</groupId>
+            <artifactId>org.eclipse.kura.broker.artemis.simple.mqtt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.kura</groupId>
+            <artifactId>org.eclipse.kura.broker.artemis.xml</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
