@@ -29,7 +29,7 @@
         <geronimo.json.version>1.0-alpha-1</geronimo.json.version>
         <geronimo.jta.version>1.1.1</geronimo.jta.version>
         <geronimo.jms.version>1.0-alpha-2</geronimo.jms.version>
-        <commons.beanutils.version>1.9.3</commons.beanutils.version>
+        <commons.beanutils.version>1.11.0</commons.beanutils.version>
         <commons.collections.version>3.2.2</commons.collections.version>
 
         <org.apache.activemq.artemis.kura.wrapper.version>3.0.0-SNAPSHOT</org.apache.activemq.artemis.kura.wrapper.version>

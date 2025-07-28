@@ -47,7 +47,7 @@ This project leverages the following third party content.
 * maven/mavencentral/org.jboss.logging/jboss-logging/3.6.1.Final, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/org.apache.geronimo.specs/geronimo-json_1.0_spec/1.0-alpha-1, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1, Apache-2.0, approved, CQ2334
-* maven/mavencentral/commons-beanutils/commons-beanutils/1.9.3, Apache-2.0, approved, CQ12654
+* maven/mavencentral/commons-beanutils/commons-beanutils/1.11.0, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/commons-collections/commons-collections/3.2.2, Apache-2.0, approved, CQ10385
 
 ## Cryptography
