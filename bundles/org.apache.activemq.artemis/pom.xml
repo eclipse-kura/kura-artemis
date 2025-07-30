@@ -78,7 +78,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Embed-Dependency>*</Embed-Dependency>
                         <Import-Package>
-                            org.apache.activemq.artemis.jdbc.store.*;version="[${org.apache.activemq.artemis.upstream.version},3)";resolution:=optional,
+                            org.apache.activemq.artemis.jdbc.store.*;version="${org.apache.activemq.artemis.upstream.version}";resolution:=optional,
                             org.apache.xpath.*;resolution:=optional,
                             org.jboss.logmanager;resolution:=optional,
                             org.jboss.logmanager.*;resolution:=optional,
