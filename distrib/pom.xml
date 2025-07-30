@@ -58,7 +58,13 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
         </dependency>
-
+        <!-- External deps in common with Camel, available in kura-target-platform -->
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jms_2.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- This project's bundles -->
         <dependency>
             <groupId>org.eclipse.kura</groupId>
             <artifactId>org.apache.activemq.artemis</artifactId>
@@ -83,20 +89,10 @@
     </organization>
 
     <properties>
-        <addon.installation.dir>/opt/eclipse/kura/plugins</addon.installation.dir>
-
-        <artemis-mqtt-protocol.jar.name>artemis-mqtt-protocol-${org.apache.activemq.artemis.upstream.version}.jar</artemis-mqtt-protocol.jar.name>
-        <artemis-native.jar.name>artemis-native-${org.apache.activemq.artemis.upstream.version}.jar</artemis-native.jar.name>
-        <jboss-logging.jar.name>jboss-logging-${jboss.logging.version}.jar</jboss-logging.jar.name>
-        <geronimo-json_1.0_spec.jar.name>geronimo-json_1.0_spec-${geronimo.json.version}.jar</geronimo-json_1.0_spec.jar.name>
-        <geronimo-jta_1.1_spec.jar.name>geronimo-jta_1.1_spec-${geronimo.jta.version}.jar</geronimo-jta_1.1_spec.jar.name>
-        <commons-beanutils.jar.name>commons-beanutils-${commons.beanutils.version}.jar</commons-beanutils.jar.name>
-        <commons-collections.jar.name>commons-collections-${commons.collections.version}.jar</commons-collections.jar.name>
-        
-        <org.apache.activemq.artemis.jar.name>org.apache.activemq.artemis-${org.apache.activemq.artemis.kura.wrapper.version}.jar</org.apache.activemq.artemis.jar.name>
-        <org.eclipse.kura.broker.artemis.core.jar.name>org.eclipse.kura.broker.artemis.core-${org.eclipse.kura.broker.artemis.core.version}.jar</org.eclipse.kura.broker.artemis.core.jar.name>
-        <org.eclipse.kura.broker.artemis.simple.mqtt.jar.name>org.eclipse.kura.broker.artemis.simple.mqtt-${org.eclipse.kura.broker.artemis.simple.mqtt.version}.jar</org.eclipse.kura.broker.artemis.simple.mqtt.jar.name>
-        <org.eclipse.kura.broker.artemis.xml.jar.name>org.eclipse.kura.broker.artemis.xml-${org.eclipse.kura.broker.artemis.xml.version}.jar</org.eclipse.kura.broker.artemis.xml.jar.name>
+        <addon.installation.dir.level3>/opt/eclipse/kura/plugins/3</addon.installation.dir.level3>
+        <addon.installation.dir.level3s>/opt/eclipse/kura/plugins/3s</addon.installation.dir.level3s>
+        <addon.installation.dir.level4>/opt/eclipse/kura/plugins/4</addon.installation.dir.level4>
+        <addon.installation.dir.level4s>/opt/eclipse/kura/plugins/4</addon.installation.dir.level4s>
 
         <!--
             Available DEB architectures:
@@ -225,16 +221,65 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>get-bundles-to-distrib</id>
-                        <phase>generate-resources</phase>
+                        <id>fetch-bundles-start-level-3</id>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <excludeTypes>pom</excludeTypes>
-                            <excludeClassifiers>sources</excludeClassifiers>
-                            <excludeTransitive>true</excludeTransitive>
-                            <outputDirectory>${project.build.directory}/plugins</outputDirectory>
+                            <includeArtifactIds>
+                                artemis-native,
+                                jboss-logging,
+                                geronimo-json_1.0_spec,
+                                geronimo-jta_1.1_spec,
+                                commons-beanutils,
+                                commons-collections,
+                                com.eurotech.framework.activemq.artemis
+                            </includeArtifactIds>
+                            <stripVersion>false</stripVersion>
+                            <outputDirectory>${project.build.directory}/plugins_3</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>fetch-bundles-start-level-3s</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                artemis-mqtt-protocol
+                            </includeArtifactIds>
+                            <stripVersion>false</stripVersion>
+                            <outputDirectory>${project.build.directory}/plugins_3s</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>fetch-bundles-start-level-4</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                org.eclipse.kura.broker.artemis.core
+                            </includeArtifactIds>
+                            <stripVersion>false</stripVersion>
+                            <outputDirectory>${project.build.directory}/plugins_4</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>fetch-bundles-start-level-4s</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>
+                                org.eclipse.kura.broker.artemis.simple.mqtt,
+                                org.eclipse.kura.broker.artemis.xml
+                            </includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/plugins_4s</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -260,121 +305,44 @@
                             <skipPOMs>false</skipPOMs>
                             <dataSet>
                                 <data>
-                                    <src>${project.build.directory}/plugins/${artemis-mqtt-protocol.jar.name}</src>
-                                    <type>file</type>
+                                    <src>${project.build.directory}/plugins_3</src>
+                                    <type>directory</type>
                                     <mapper>
                                         <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3s/</prefix>
+                                        <prefix>${addon.installation.dir.level3}</prefix>
                                         <user>kurad</user>
                                         <group>kurad</group>
                                         <filemode>600</filemode>
                                     </mapper>
                                 </data>
                                 <data>
-                                    <src>${project.build.directory}/plugins/${artemis-native.jar.name}</src>
-                                    <type>file</type>
+                                    <src>${project.build.directory}/plugins_3s</src>
+                                    <type>directory</type>
                                     <mapper>
                                         <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3/</prefix>
+                                        <prefix>${addon.installation.dir.level3s}</prefix>
                                         <user>kurad</user>
                                         <group>kurad</group>
                                         <filemode>600</filemode>
                                     </mapper>
                                 </data>
                                 <data>
-                                    <src>${project.build.directory}/plugins/${jboss-logging.jar.name}</src>
-                                    <type>file</type>
+                                    <src>${project.build.directory}/plugins_4</src>
+                                    <type>directory</type>
                                     <mapper>
                                         <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3/</prefix>
+                                        <prefix>${addon.installation.dir.level4}</prefix>
                                         <user>kurad</user>
                                         <group>kurad</group>
                                         <filemode>600</filemode>
                                     </mapper>
                                 </data>
                                 <data>
-                                    <src>${project.build.directory}/plugins/${geronimo-json_1.0_spec.jar.name}</src>
-                                    <type>file</type>
+                                    <src>${project.build.directory}/plugins_4s</src>
+                                    <type>directory</type>
                                     <mapper>
                                         <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3/</prefix>
-                                        <user>kurad</user>
-                                        <group>kurad</group>
-                                        <filemode>600</filemode>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/plugins/${geronimo-jta_1.1_spec.jar.name}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3/</prefix>
-                                        <user>kurad</user>
-                                        <group>kurad</group>
-                                        <filemode>600</filemode>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/plugins/${commons-beanutils.jar.name}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3/</prefix>
-                                        <user>kurad</user>
-                                        <group>kurad</group>
-                                        <filemode>600</filemode>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/plugins/${commons-collections.jar.name}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3/</prefix>
-                                        <user>kurad</user>
-                                        <group>kurad</group>
-                                        <filemode>600</filemode>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/plugins/${org.apache.activemq.artemis.jar.name}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>${addon.installation.dir}/3/</prefix>
-                                        <user>kurad</user>
-                                        <group>kurad</group>
-                                        <filemode>600</filemode>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/plugins/${org.eclipse.kura.broker.artemis.core.jar.name}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>${addon.installation.dir}/4/</prefix>
-                                        <user>kurad</user>
-                                        <group>kurad</group>
-                                        <filemode>600</filemode>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/plugins/${org.eclipse.kura.broker.artemis.simple.mqtt.jar.name}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>${addon.installation.dir}/4s/</prefix>
-                                        <user>kurad</user>
-                                        <group>kurad</group>
-                                        <filemode>600</filemode>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/plugins/${org.eclipse.kura.broker.artemis.xml.jar.name}</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>${addon.installation.dir}/4s/</prefix>
+                                        <prefix>${addon.installation.dir.level4s}</prefix>
                                         <user>kurad</user>
                                         <group>kurad</group>
                                         <filemode>600</filemode>
