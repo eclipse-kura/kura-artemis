@@ -11,3 +11,4 @@ RemoteSystemsTempFiles
 .settings
 .vscode
 lib/
+bin/
