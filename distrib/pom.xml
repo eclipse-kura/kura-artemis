@@ -236,6 +236,7 @@
                                 commons-collections,
                                 org.apache.activemq.artemis
                             </includeArtifactIds>
+                            <excludeTransitive>true</excludeTransitive>
                             <stripVersion>false</stripVersion>
                             <outputDirectory>${project.build.directory}/plugins_3</outputDirectory>
                         </configuration>
