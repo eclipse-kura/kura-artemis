@@ -234,7 +234,7 @@
                                 geronimo-jta_1.1_spec,
                                 commons-beanutils,
                                 commons-collections,
-                                com.eurotech.framework.activemq.artemis
+                                org.apache.activemq.artemis
                             </includeArtifactIds>
                             <stripVersion>false</stripVersion>
                             <outputDirectory>${project.build.directory}/plugins_3</outputDirectory>
