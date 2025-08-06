@@ -92,7 +92,7 @@
         <addon.installation.dir.level3>/opt/eclipse/kura/plugins/3</addon.installation.dir.level3>
         <addon.installation.dir.level3s>/opt/eclipse/kura/plugins/3s</addon.installation.dir.level3s>
         <addon.installation.dir.level4>/opt/eclipse/kura/plugins/4</addon.installation.dir.level4>
-        <addon.installation.dir.level4s>/opt/eclipse/kura/plugins/4</addon.installation.dir.level4s>
+        <addon.installation.dir.level4s>/opt/eclipse/kura/plugins/4s</addon.installation.dir.level4s>
 
         <!--
             Available DEB architectures:
