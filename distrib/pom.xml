@@ -31,26 +31,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-mqtt-protocol</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-native</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-json_1.0_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jta_1.1_spec</artifactId>
-        </dependency>
-        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
         </dependency>
@@ -58,11 +38,21 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
         </dependency>
-        <!-- External deps in common with Camel, available in kura-target-platform -->
         <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jms_2.0_spec</artifactId>
-            <scope>provided</scope>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-artemis-native</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-mqtt-protocol</artifactId>
         </dependency>
         <!-- This project's bundles -->
         <dependency>
@@ -228,12 +218,11 @@
                         </goals>
                         <configuration>
                             <includeArtifactIds>
-                                artemis-native,
-                                jboss-logging,
-                                geronimo-json_1.0_spec,
-                                geronimo-jta_1.1_spec,
+                                activemq-artemis-native,
                                 commons-beanutils,
                                 commons-collections,
+                                commons-text,
+                                commons-logging,
                                 org.apache.activemq.artemis
                             </includeArtifactIds>
                             <excludeTransitive>true</excludeTransitive>
@@ -251,6 +240,7 @@
                             <includeArtifactIds>
                                 artemis-mqtt-protocol
                             </includeArtifactIds>
+                            <excludeTransitive>true</excludeTransitive>
                             <stripVersion>false</stripVersion>
                             <outputDirectory>${project.build.directory}/plugins_3s</outputDirectory>
                         </configuration>

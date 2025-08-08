@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 Red Hat Inc and others
- * 
+ * Copyright (c) 2017, 2025 Red Hat Inc and others
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *  Red Hat Inc
  *  Eurotech
@@ -30,6 +30,7 @@ import java.util.Map;
 import org.apache.activemq.artemis.core.config.FileDeploymentManager;
 import org.apache.activemq.artemis.core.config.impl.FileConfiguration;
 import org.apache.activemq.artemis.core.config.impl.SecurityConfiguration;
+import org.apache.activemq.artemis.core.server.ActivateCallback;
 import org.apache.activemq.artemis.core.server.ActiveMQComponent;
 import org.apache.activemq.artemis.core.server.ActiveMQServer;
 import org.apache.activemq.artemis.jms.server.config.impl.FileJMSConfiguration;
@@ -85,7 +86,9 @@ public class ServerRunner {
 
         // load components
 
-        this.components = fileDeploymentManager.buildService(security, ManagementFactory.getPlatformMBeanServer());
+        this.components = fileDeploymentManager.buildService(security, ManagementFactory.getPlatformMBeanServer(),
+                new ActivateCallback() {
+                });
 
         logger.info("Loaded components: {}", this.components.size());
         for (final Map.Entry<String, ActiveMQComponent> entry : this.components.entrySet()) {
