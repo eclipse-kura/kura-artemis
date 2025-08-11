@@ -200,33 +200,6 @@
                 <artifactId>jspecify</artifactId>
                 <version>${jspecify.version}</version>
             </dependency>
-            <!-- TODO: maybe this needs to be added in Kura target platform -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <!-- TODO: maybe these netty ones have to be added in Kura target platform -->
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-codec-socks</artifactId>
-                <version>${netty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-handler-proxy</artifactId>
-                <version>${netty.version}</version>
-            </dependency>
             <!-- END transitive deps -->
             <!-- External deps that are OSGi bundles, that do not need wrapping in an eclipse kura
             bundle -->

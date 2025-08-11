@@ -47,9 +47,6 @@
         <error_prone_annotations.version>2.41.0</error_prone_annotations.version>
         <jspecify.version>1.0.0</jspecify.version>
 
-        <jackson.version>2.19.2</jackson.version> <!-- Match with jackson deps version in Kura target platform -->
-        <netty.version>4.1.122.Final</netty.version> <!-- Match with netty deps version in Kura target platform -->
-
         <commons-beanutils.version>1.11.0</commons-beanutils.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <commons-text.version>1.13.0</commons-text.version>

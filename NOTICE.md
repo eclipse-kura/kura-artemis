@@ -65,11 +65,6 @@ This project leverages the following third party content.
 * maven/mavencentral/com.codahale.metrics/metrics-core/3.0.2, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/com.google.errorprone/error_prone_annotations/2.41.0, Apache-2.0, approved, #22631
 * maven/mavencentral/org.jspecify/jspecify/1.0.0, Apache-2.0, approved, #21897
-* maven/mavencentral/com.fasterxml.jackson.core/jackson-databind/2.19.2, Apache-2.0, approved, #21909
-* maven/mavencentral/com.fasterxml.jackson.core/jackson-annotations/2.19.2, Apache-2.0, approved, #21911
-* maven/mavencentral/com.fasterxml.jackson.core/jackson-core/2.19.2, Apache-2.0 AND MIT, approved, #21916
-* maven/mavencentral/io.netty/netty-codec-socks/4.1.122.Final, Apache-2.0 AND BSD-3-Clause AND MIT, approved, CQ20926
-* maven/mavencentral/io.netty/netty-handler-proxy/4.1.122.Final, Apache-2.0 AND BSD-3-Clause AND MIT, approved, CQ20926
 * maven/mavencentral/commons-beanutils/commons-beanutils/1.11.0, Apache-2.0, approved, #21555
 * maven/mavencentral/commons-collections/commons-collections/3.2.2, Apache-2.0, approved, #15185
 * maven/mavencentral/org.apache.commons/commons-text/1.13.0, Apache-2.0, approved, #17931
