@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.eclipse.kura</groupId>
             <artifactId>org.apache.activemq.artemis</artifactId>
-            <scope>provided</scope>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
     
