@@ -34,15 +34,15 @@ This project leverages the following third party content.
 
 ### Maven Dependencies
 
-* maven/mavencentral/org.apache.activemq/artemis-server/2.33.0, Apache-2.0, approved, #14929
-* maven/mavencentral/org.apache.activemq/artemis-commons/2.33.0, Apache-2.0 AND (BSD-3-Clause AND MIT), approved, #14932
-* maven/mavencentral/org.apache.activemq/artemis-core-client/2.33.0, Apache-2.0, approved, #14918
-* maven/mavencentral/org.apache.activemq/artemis-journal/2.33.0, Apache-2.0 AND (Apache-2.0 AND MIT), approved, #14979
-* maven/mavencentral/org.apache.activemq/artemis-selector/2.33.0, Apache-2.0, approved, #14963
-* maven/mavencentral/org.apache.activemq/artemis-jms-client/2.33.0, Apache-2.0, approved, #14967
-* maven/mavencentral/org.apache.activemq/artemis-jms-server/2.33.0, Apache-2.0, approved, #14962
-* maven/mavencentral/org.apache.activemq/artemis-service-extensions/2.33.0, Apache-2.0, approved, #14934
-* maven/mavencentral/org.apache.activemq/artemis-lockmanager-api/2.33.0, Apache-2.0, approved, clearlydefined
+* maven/mavencentral/org.apache.activemq/artemis-server/2.40.0, Apache-2.0, approved, #14929
+* maven/mavencentral/org.apache.activemq/artemis-commons/2.40.0, Apache-2.0 AND (BSD-3-Clause AND MIT), approved, #14932
+* maven/mavencentral/org.apache.activemq/artemis-core-client/2.40.0, Apache-2.0, approved, #14918
+* maven/mavencentral/org.apache.activemq/artemis-journal/2.40.0, Apache-2.0 AND (Apache-2.0 AND MIT), approved, #14979
+* maven/mavencentral/org.apache.activemq/artemis-selector/2.40.0, Apache-2.0, approved, #14963
+* maven/mavencentral/org.apache.activemq/artemis-jms-client/2.40.0, Apache-2.0, approved, #14967
+* maven/mavencentral/org.apache.activemq/artemis-jms-server/2.40.0, Apache-2.0, approved, #14962
+* maven/mavencentral/org.apache.activemq/artemis-service-extensions/2.40.0, Apache-2.0, approved, #14934
+* maven/mavencentral/org.apache.activemq/artemis-lockmanager-api/2.40.0, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/jakarta.jms/jakarta.jms-api/3.1.0, EPL-2.0 OR GPL-2.0-only with Classpath-exception-2.0, approved, ee4j.messaging
 * maven/mavencentral/jakarta.transaction/jakarta.transaction-api/2.0.1, EPL-2.0 OR GPL-2.0-only with Classpath-exception-2.0, approved, ee4j.jta
 * maven/mavencentral/jakarta.enterprise/jakarta.enterprise.cdi-api/4.1.0, Apache-2.0, approved, ee4j.cdi
