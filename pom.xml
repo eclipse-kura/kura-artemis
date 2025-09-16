@@ -52,11 +52,6 @@
         <commons-text.version>1.13.0</commons-text.version>
         <commons-logging.version>1.3.5</commons-logging.version>
         <activemq-artemis-native.version>2.0.0</activemq-artemis-native.version>
-
-        <org.apache.activemq.artemis.kura.wrapper.version>3.0.0-SNAPSHOT</org.apache.activemq.artemis.kura.wrapper.version>
-        <org.eclipse.kura.broker.artemis.core.version>2.0.0-SNAPSHOT</org.eclipse.kura.broker.artemis.core.version>
-        <org.eclipse.kura.broker.artemis.simple.mqtt.version>2.0.0-SNAPSHOT</org.eclipse.kura.broker.artemis.simple.mqtt.version>
-        <org.eclipse.kura.broker.artemis.xml.version>2.0.0-SNAPSHOT</org.eclipse.kura.broker.artemis.xml.version>
     </properties>
 
     <modules>

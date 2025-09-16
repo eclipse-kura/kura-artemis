@@ -237,22 +237,22 @@
             <dependency>
                 <groupId>org.eclipse.kura</groupId>
                 <artifactId>org.apache.activemq.artemis</artifactId>
-                <version>${org.apache.activemq.artemis.kura.wrapper.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.kura</groupId>
                 <artifactId>org.eclipse.kura.broker.artemis.core</artifactId>
-                <version>${org.eclipse.kura.broker.artemis.core.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.kura</groupId>
                 <artifactId>org.eclipse.kura.broker.artemis.simple.mqtt</artifactId>
-                <version>${org.eclipse.kura.broker.artemis.simple.mqtt.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.kura</groupId>
                 <artifactId>org.eclipse.kura.broker.artemis.xml</artifactId>
-                <version>${org.eclipse.kura.broker.artemis.xml.version}</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -26,7 +26,6 @@
     </parent>
 
     <artifactId>org.eclipse.kura.broker.artemis.core</artifactId>
-    <version>${org.eclipse.kura.broker.artemis.core.version}</version>
     <packaging>eclipse-plugin</packaging>
 
     <properties>

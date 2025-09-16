@@ -26,7 +26,6 @@
     </parent>
 
     <artifactId>org.apache.activemq.artemis</artifactId>
-    <version>${org.apache.activemq.artemis.kura.wrapper.version}</version>
     <packaging>bundle</packaging>
 
     <description>ActiveMQ Artemis dependencies for Eclipse Kura</description>
