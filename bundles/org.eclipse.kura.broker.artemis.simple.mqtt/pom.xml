@@ -26,7 +26,6 @@
     </parent>
 
     <artifactId>org.eclipse.kura.broker.artemis.simple.mqtt</artifactId>
-    <version>${org.eclipse.kura.broker.artemis.simple.mqtt.version}</version>
     <packaging>eclipse-plugin</packaging>
 
     <properties>

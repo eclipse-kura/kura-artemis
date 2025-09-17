@@ -28,7 +28,6 @@
 
     <groupId>org.eclipse.kura</groupId>
     <artifactId>kura-artemis-target-definition</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <packaging>eclipse-target-definition</packaging>
     <name>Target definition for kura-artemis</name>
 
