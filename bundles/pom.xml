@@ -84,7 +84,7 @@
                             <artifact>
                                 <groupId>org.eclipse.kura</groupId>
                                 <artifactId>kura-artemis-target-definition</artifactId>
-                                <version>1.0.0-SNAPSHOT</version>
+                                <version>${project.version}</version>
                             </artifact>
                         </target>
                     </configuration>
