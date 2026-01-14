@@ -7,8 +7,8 @@ node {
             enable: true,
             projectKey: "eclipse-kura_kura-artemis",
             tokenId: "sonarcloud-token-kura-artemis",
-            exclusions: "*.xml",
-            testExclusions: "**/*.java,*.xml"
+            exclusions: "**/*.xml,**/*.yml",
+            testExclusions: "**/*"
         ],
     )
 }
