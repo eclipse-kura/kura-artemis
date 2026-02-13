@@ -55,7 +55,7 @@
     </properties>
 
     <modules>
-        <module>kura-artemis-bom</module>
+        <module>kura-artemis-tycho-deps</module>
         <module>target-definition</module>
         <module>bundles</module>
         <module>distrib</module>
