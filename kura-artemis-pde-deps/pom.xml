@@ -39,8 +39,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- External deps that are not OSGi bundles, that will be wrapped by our
-            org.apache.activemq.artemis bundle -->
+            <!-- External deps that are not OSGi bundles, that will be wrapped by our org.apache.activemq.artemis bundle -->
             <!-- START artemis deps -->
             <dependency>
                 <groupId>org.apache.activemq</groupId>
