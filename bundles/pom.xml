@@ -44,7 +44,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.eclipse.kura</groupId>
-                <artifactId>kura-artemis-tycho-deps</artifactId>
+                <artifactId>kura-artemis-pde-deps</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
