@@ -95,8 +95,7 @@
                     <artifactId>tycho-packaging-plugin</artifactId>
                     <version>${tycho-version}</version>
                     <configuration>
-                        <strictVersions>true</strictVersions>
-                        <deriveHeaderFromSource>false</deriveHeaderFromSource>
+                        <skipPomGeneration>true</skipPomGeneration>
                     </configuration>
                 </plugin>
 
