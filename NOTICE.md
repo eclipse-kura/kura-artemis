@@ -51,6 +51,7 @@ This project leverages the following third party content.
 * maven/mavencentral/jakarta.enterprise/jakarta.enterprise.lang-model/4.1.0, Apache-2.0, approved, ee4j.cdi
 * maven/mavencentral/javax.persistence/javax.persistence-api/2.2, BSD-3-Clause, approved, #280
 * maven/mavencentral/org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1, Apache-2.0, approved, CQ2334
+* maven/mavencentral/org.apache.geronimo.specs/geronimo-jms_2.0_spec/1.0-alpha-2, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/org.apache.commons/commons-configuration2/2.12.0, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/io.micrometer/micrometer-core/1.15.2, Apache-2.0, approved, clearlydefined
 * maven/mavencentral/io.micrometer/micrometer-commons/1.15.2, Apache-2.0, approved, clearlydefined
