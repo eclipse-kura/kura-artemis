@@ -175,6 +175,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
                         <Import-Package>
+                            org.apache.activemq.artemis.api.core,
                             org.apache.activemq.artemis.jdbc.store.*;version="${org.apache.activemq.artemis.upstream.version}";resolution:=optional,
                             org.apache.xpath.*;resolution:=optional,
                             io.netty.channel.kqueue;resolution:=optional,

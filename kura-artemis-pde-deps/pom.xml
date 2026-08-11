@@ -43,6 +43,11 @@
             <!-- START artemis deps -->
             <dependency>
                 <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-core</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
                 <artifactId>artemis-server</artifactId>
                 <version>${org.apache.activemq.artemis.upstream.version}</version>
             </dependency>
