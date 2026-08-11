@@ -177,6 +177,7 @@
                         <Import-Package>
                             org.apache.activemq.artemis.jdbc.store.*;version="${org.apache.activemq.artemis.upstream.version}";resolution:=optional,
                             org.apache.xpath.*;resolution:=optional,
+                            io.netty.channel.kqueue;resolution:=optional,
                             org.apache.commons.text,
                             org.apache.commons.lang3,
                             <!-- START micrometer-core optional dependencies -->
