@@ -43,6 +43,11 @@
             <!-- START artemis deps -->
             <dependency>
                 <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-core</artifactId>
+                <version>${org.apache.activemq.artemis.upstream.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
                 <artifactId>artemis-server</artifactId>
                 <version>${org.apache.activemq.artemis.upstream.version}</version>
             </dependency>
@@ -129,6 +134,11 @@
                 <groupId>org.apache.geronimo.specs</groupId>
                 <artifactId>geronimo-jta_1.1_spec</artifactId>
                 <version>${geronimo.jta.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-jms_2.0_spec</artifactId>
+                <version>${geronimo.jms.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>

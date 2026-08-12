@@ -54,6 +54,10 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>artemis-mqtt-protocol</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jms_2.0_spec</artifactId>
+        </dependency>
         <!-- This project's bundles -->
         <dependency>
             <groupId>org.eclipse.kura</groupId>
@@ -223,6 +227,7 @@
                                 commons-collections,
                                 commons-text,
                                 commons-logging,
+                                geronimo-jms_2.0_spec,
                                 org.apache.activemq.artemis
                             </includeArtifactIds>
                             <excludeTransitive>true</excludeTransitive>
