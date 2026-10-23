@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 Red Hat Inc and others
- * 
+ * Copyright (c) 2017, 2026 Red Hat Inc and others
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *  Red Hat Inc
  *  Eurotech
@@ -18,7 +18,6 @@ import java.io.StringWriter;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
-
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -28,7 +27,6 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
-
 import org.eclipse.kura.broker.artemis.core.ServerConfiguration;
 import org.eclipse.kura.broker.artemis.core.ServerManager;
 import org.eclipse.kura.broker.artemis.core.UserAuthentication;
@@ -140,8 +138,8 @@ public class ServiceComponent implements ConfigurableComponent {
 
     private String createBrokerXml(final Map<String, Object> properties) throws Exception {
 
-        try (final InputStream input = Objects
-                .requireNonNull(ServiceComponent.class.getResourceAsStream("broker.xml"))) {
+        try (final InputStream input =
+                Objects.requireNonNull(ServiceComponent.class.getResourceAsStream("broker.xml"))) {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             dbf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
@@ -204,5 +202,4 @@ public class ServiceComponent implements ConfigurableComponent {
 
         acceptorNode.setTextContent(mqttAcceptor);
     }
-
 }

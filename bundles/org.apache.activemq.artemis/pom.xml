@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2017, 2025 Red Hat Inc and/or its affiliates and others
+    Copyright (c) 2017, 2026 Red Hat Inc and/or its affiliates and others
 
     This program and the accompanying materials are made
     available under the terms of the Eclipse Public License 2.0
@@ -14,9 +14,7 @@
      Eurotech
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -69,7 +67,7 @@
             <artifactId>artemis-lockmanager-api</artifactId>
         </dependency>
         <!-- END artemis deps -->
-         <!-- START jakarta deps -->
+        <!-- START jakarta deps -->
         <dependency>
             <groupId>jakarta.jms</groupId>
             <artifactId>jakarta.jms-api</artifactId>
@@ -212,12 +210,8 @@
                             <!-- END micrometer-core optional dependencies -->
                             *
                         </Import-Package>
-                        <Export-Package>
-                            org.apache.activemq.artemis.*;version="${org.apache.activemq.artemis.upstream.version}"
-                        </Export-Package>
-                        <Require-Capability>
-                            osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=17))"
-                        </Require-Capability>
+                        <Export-Package>org.apache.activemq.artemis.*;version="${org.apache.activemq.artemis.upstream.version}"</Export-Package>
+                        <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=17))"</Require-Capability>
                     </instructions>
                 </configuration>
             </plugin>

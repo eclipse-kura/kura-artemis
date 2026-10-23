@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Red Hat Inc and others
+ * Copyright (c) 2017, 2026 Red Hat Inc and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
-
 import org.apache.activemq.artemis.core.config.FileDeploymentManager;
 import org.apache.activemq.artemis.core.config.impl.FileConfiguration;
 import org.apache.activemq.artemis.core.config.impl.SecurityConfiguration;
@@ -52,8 +51,8 @@ public class ServerRunner {
 
     private final Collection<ProtocolManagerFactory<?>> protocols;
 
-    public ServerRunner(final ServerConfiguration configuration,
-            final Collection<ProtocolManagerFactory<?>> protocols) {
+    public ServerRunner(
+            final ServerConfiguration configuration, final Collection<ProtocolManagerFactory<?>> protocols) {
         this.configuration = configuration;
         this.protocols = protocols;
     }
@@ -79,16 +78,16 @@ public class ServerRunner {
 
         final FileJMSConfiguration jmsConfiguration = new FileJMSConfiguration();
 
-        final FileDeploymentManager fileDeploymentManager = new FileDeploymentManager(brokerXmlFile.toUri().toString());
+        final FileDeploymentManager fileDeploymentManager =
+                new FileDeploymentManager(brokerXmlFile.toUri().toString());
         fileDeploymentManager.addDeployable(configurationFile);
         fileDeploymentManager.addDeployable(jmsConfiguration);
         fileDeploymentManager.readConfiguration();
 
         // load components
 
-        this.components = fileDeploymentManager.buildService(security, ManagementFactory.getPlatformMBeanServer(),
-                new ActivateCallback() {
-                });
+        this.components = fileDeploymentManager.buildService(
+                security, ManagementFactory.getPlatformMBeanServer(), new ActivateCallback() {});
 
         logger.info("Loaded components: {}", this.components.size());
         for (final Map.Entry<String, ActiveMQComponent> entry : this.components.entrySet()) {
