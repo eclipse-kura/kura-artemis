@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2017, 2020 Red Hat Inc and others
- * 
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *  Red Hat Inc
  *  Eurotech
@@ -15,7 +15,6 @@ package org.eclipse.kura.broker.artemis.core;
 
 import java.util.Collection;
 import java.util.Set;
-
 import org.apache.activemq.artemis.spi.core.protocol.ProtocolManagerFactory;
 import org.eclipse.kura.broker.artemis.core.internal.ProtocolTracker;
 import org.eclipse.kura.broker.artemis.core.internal.ProtocolTrackerListener;
@@ -41,7 +40,6 @@ public class ServerManager {
         public void protocolsRemoved(final Set<String> protocols) {
             ServerManager.this.protocolsRemoved(protocols);
         }
-
     };
 
     private ServerRunner runner;
@@ -49,8 +47,8 @@ public class ServerManager {
     public ServerManager(final ServerConfiguration configuration) {
         this.configuration = configuration;
 
-        this.protocolTracker = new ProtocolTracker(FrameworkUtil.getBundle(ServerManager.class).getBundleContext(),
-                this.listener);
+        this.protocolTracker =
+                new ProtocolTracker(FrameworkUtil.getBundle(ServerManager.class).getBundleContext(), this.listener);
     }
 
     public synchronized void start() throws Exception {
@@ -87,8 +85,8 @@ public class ServerManager {
             return;
         }
 
-        final Collection<ProtocolManagerFactory<?>> protocols = this.protocolTracker
-                .resolveProtocols(this.configuration.getRequiredProtocols());
+        final Collection<ProtocolManagerFactory<?>> protocols =
+                this.protocolTracker.resolveProtocols(this.configuration.getRequiredProtocols());
 
         if (protocols == null) {
             logger.warn("Unable to resolve protocols: {}", this.configuration.getRequiredProtocols());
@@ -105,8 +103,8 @@ public class ServerManager {
             return;
         }
 
-        final Collection<ProtocolManagerFactory<?>> protocols = this.protocolTracker
-                .resolveProtocols(this.configuration.getRequiredProtocols());
+        final Collection<ProtocolManagerFactory<?>> protocols =
+                this.protocolTracker.resolveProtocols(this.configuration.getRequiredProtocols());
 
         if (protocols != null) {
             return;
@@ -124,5 +122,4 @@ public class ServerManager {
         this.runner.stop();
         this.runner = null;
     }
-
 }

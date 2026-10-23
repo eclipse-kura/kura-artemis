@@ -13,9 +13,7 @@
      Eurotech
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -30,6 +28,13 @@
     <packaging>pom</packaging>
 
     <name>Parent POM for kura-artemis</name>
+
+    <modules>
+        <module>org.apache.activemq.artemis</module>
+        <module>org.eclipse.kura.broker.artemis.core</module>
+        <module>org.eclipse.kura.broker.artemis.simple.mqtt</module>
+        <module>org.eclipse.kura.broker.artemis.xml</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -143,14 +148,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jarsigner-plugin</artifactId>
                     <version>${maven.jarsigner.plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>sign</id>
-                            <goals>
-                                <goal>sign</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                     <configuration>
                         <skip>${skip.artifact.signing}</skip>
                         <storetype>${keystore.type}</storetype>
@@ -166,6 +163,14 @@
                             <compress>false</compress>
                         </archiverConfig>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>sign</id>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <!-- enable jar signing via Eclipse Signing Server -->
@@ -176,6 +181,9 @@
                     <groupId>org.eclipse.cbi.maven.plugins</groupId>
                     <artifactId>eclipse-jarsigner-plugin</artifactId>
                     <version>1.1.5</version>
+                    <configuration>
+                        <signerUrl>http://localhost:8080/jarsigner</signerUrl>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>sign</id>
@@ -185,9 +193,6 @@
                             <phase>verify</phase>
                         </execution>
                     </executions>
-                    <configuration>
-                        <signerUrl>http://localhost:8080/jarsigner</signerUrl>
-                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -351,11 +356,4 @@
             </properties>
         </profile>
     </profiles>
-
-    <modules>
-        <module>org.apache.activemq.artemis</module>
-        <module>org.eclipse.kura.broker.artemis.core</module>
-        <module>org.eclipse.kura.broker.artemis.simple.mqtt</module>
-        <module>org.eclipse.kura.broker.artemis.xml</module>
-    </modules>
 </project>

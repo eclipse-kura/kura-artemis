@@ -13,9 +13,7 @@
      Eurotech
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -28,6 +26,34 @@
 
     <artifactId>kura-artemis.distrib</artifactId>
     <packaging>pom</packaging>
+
+    <organization>
+        <name>Eclipse Kura</name>
+        <url>https://eclipse.dev/kura/</url>
+    </organization>
+
+    <properties>
+        <addon.installation.dir.level3>/opt/eclipse/kura/plugins/3</addon.installation.dir.level3>
+        <addon.installation.dir.level3s>/opt/eclipse/kura/plugins/3s</addon.installation.dir.level3s>
+        <addon.installation.dir.level4>/opt/eclipse/kura/plugins/4</addon.installation.dir.level4>
+        <addon.installation.dir.level4s>/opt/eclipse/kura/plugins/4s</addon.installation.dir.level4s>
+
+        <!--
+            Available DEB architectures:
+            all, amd64, arm64
+        -->
+        <deb.architecture>all</deb.architecture>
+
+        <!-- final name of the generated debian package -->
+        <package.name>kura-artemis</package.name>
+
+        <!-- properties used for artifact upload on artifactory repository -->
+        <kura.repo.distribution>kura-6</kura.repo.distribution>
+        <kura.repo.module>base</kura.repo.module>
+
+        <summary>Eclipse Kura MQTT broker based on Apache ActiveMQ Artemis</summary>
+        <long.description>Addon for Eclipse Kura that provides a MQTT broker server based on Apache ActiveMQ Artemis.</long.description>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -77,91 +103,6 @@
         </dependency>
     </dependencies>
 
-    <organization>
-        <name>Eclipse Kura</name>
-        <url>https://eclipse.dev/kura/</url>
-    </organization>
-
-    <properties>
-        <addon.installation.dir.level3>/opt/eclipse/kura/plugins/3</addon.installation.dir.level3>
-        <addon.installation.dir.level3s>/opt/eclipse/kura/plugins/3s</addon.installation.dir.level3s>
-        <addon.installation.dir.level4>/opt/eclipse/kura/plugins/4</addon.installation.dir.level4>
-        <addon.installation.dir.level4s>/opt/eclipse/kura/plugins/4s</addon.installation.dir.level4s>
-
-        <!--
-            Available DEB architectures:
-            all, amd64, arm64
-        -->
-        <deb.architecture>all</deb.architecture>
-
-        <!-- final name of the generated debian package -->
-        <package.name>kura-artemis</package.name>
-
-        <!-- properties used for artifact upload on artifactory repository -->
-        <kura.repo.distribution>kura-6</kura.repo.distribution>
-        <kura.repo.module>base</kura.repo.module>
-
-        <summary>Eclipse Kura MQTT broker based on Apache ActiveMQ Artemis</summary>
-        <long.description>Addon for Eclipse Kura that provides a MQTT broker server based on Apache ActiveMQ Artemis.</long.description>
-    </properties>
-
-    <profiles>
-        <!-- Internal profile: FOR INTERNAL USE ONLY - active if -DreleaseBuild is *not* specified. -->
-        <profile>
-            <id>debugBuild</id>
-            <activation>
-                <property>
-                    <name>!releaseBuild</name>
-                </property>
-            </activation>
-            <properties>
-                <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
-                <package.snapshot>git${maven.build.timestamp}.${git.commit.id.abbrev}</package.snapshot>
-
-                <package.version>${release.version}~${package.snapshot}</package.version>
-                <package.revision>1</package.revision>
-            </properties>
-        </profile>
-        <!-- Internal profile: FOR INTERNAL USE ONLY - active if -DreleaseBuild *is* specified. -->
-        <profile>
-            <id>releaseBuild</id>
-            <activation>
-                <property>
-                    <name>releaseBuild</name>
-                </property>
-            </activation>
-            <properties>
-                <package.version>${release.version}</package.version>
-                <package.revision>1</package.revision>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>3.5.0</version>
-                        <executions>
-                            <execution>
-                                <id>enforce-no-snapshots</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireReleaseVersion>
-                                            <message>No snapshots allowed for release builds!</message>
-                                        </requireReleaseVersion>
-                                    </rules>
-                                    <fail>true</fail>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <build>
         <plugins>
             <!-- Responsible for removing the "-SNAPSHOT" from the project.version -->
@@ -179,7 +120,7 @@
                             <name>release.version</name>
                             <value>${project.version}</value>
                             <regex>-SNAPSHOT</regex>
-                            <replacement></replacement>
+                            <replacement />
                             <failIfNoMatch>false</failIfNoMatch>
                         </configuration>
                     </execution>
@@ -191,6 +132,14 @@
                 <groupId>io.github.git-commit-id</groupId>
                 <artifactId>git-commit-id-maven-plugin</artifactId>
                 <version>9.0.1</version>
+                <configuration>
+                    <injectAllReactorProjects>true</injectAllReactorProjects>
+                    <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                    <skipPoms>false</skipPoms>
+                    <includeOnlyProperties>
+                        <includeOnlyProperty>^git.commit.id.abbrev$</includeOnlyProperty>
+                    </includeOnlyProperties>
+                </configuration>
                 <executions>
                     <execution>
                         <id>get-the-git-infos</id>
@@ -200,14 +149,6 @@
                         <phase>initialize</phase>
                     </execution>
                 </executions>
-                <configuration>
-                    <injectAllReactorProjects>true</injectAllReactorProjects>
-                    <generateGitPropertiesFile>false</generateGitPropertiesFile>
-                    <skipPoms>false</skipPoms>
-                    <includeOnlyProperties>
-                        <includeOnlyProperty>^git.commit.id.abbrev$</includeOnlyProperty>
-                    </includeOnlyProperties>
-                </configuration>
             </plugin>
 
             <!-- Responsible for copying the dependencies into a known location -->
@@ -216,20 +157,18 @@
                 <executions>
                     <execution>
                         <id>fetch-bundles-start-level-3</id>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
+                        <phase>generate-sources</phase>
                         <configuration>
-                            <includeArtifactIds>
-                                activemq-artemis-native,
+                            <includeArtifactIds>activemq-artemis-native,
                                 commons-beanutils,
                                 commons-collections,
                                 commons-text,
                                 commons-logging,
                                 geronimo-jms_2.0_spec,
-                                org.apache.activemq.artemis
-                            </includeArtifactIds>
+                                org.apache.activemq.artemis</includeArtifactIds>
                             <excludeTransitive>true</excludeTransitive>
                             <stripVersion>false</stripVersion>
                             <outputDirectory>${project.build.directory}/plugins_3</outputDirectory>
@@ -237,14 +176,12 @@
                     </execution>
                     <execution>
                         <id>fetch-bundles-start-level-3s</id>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
+                        <phase>generate-sources</phase>
                         <configuration>
-                            <includeArtifactIds>
-                                artemis-mqtt-protocol
-                            </includeArtifactIds>
+                            <includeArtifactIds>artemis-mqtt-protocol</includeArtifactIds>
                             <excludeTransitive>true</excludeTransitive>
                             <stripVersion>false</stripVersion>
                             <outputDirectory>${project.build.directory}/plugins_3s</outputDirectory>
@@ -252,29 +189,25 @@
                     </execution>
                     <execution>
                         <id>fetch-bundles-start-level-4</id>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
+                        <phase>generate-sources</phase>
                         <configuration>
-                            <includeArtifactIds>
-                                org.eclipse.kura.broker.artemis.core
-                            </includeArtifactIds>
+                            <includeArtifactIds>org.eclipse.kura.broker.artemis.core</includeArtifactIds>
                             <stripVersion>false</stripVersion>
                             <outputDirectory>${project.build.directory}/plugins_4</outputDirectory>
                         </configuration>
                     </execution>
                     <execution>
                         <id>fetch-bundles-start-level-4s</id>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
+                        <phase>generate-sources</phase>
                         <configuration>
-                            <includeArtifactIds>
-                                org.eclipse.kura.broker.artemis.simple.mqtt,
-                                org.eclipse.kura.broker.artemis.xml
-                            </includeArtifactIds>
+                            <includeArtifactIds>org.eclipse.kura.broker.artemis.simple.mqtt,
+                                org.eclipse.kura.broker.artemis.xml</includeArtifactIds>
                             <outputDirectory>${project.build.directory}/plugins_4s</outputDirectory>
                         </configuration>
                     </execution>
@@ -288,10 +221,10 @@
                 <executions>
                     <execution>
                         <id>generate-deb</id>
-                        <phase>package</phase>
                         <goals>
                             <goal>jdeb</goal>
                         </goals>
+                        <phase>package</phase>
                         <configuration>
                             <verbose>true</verbose>
                             <deb>${basedir}/target/deb/${package.name}_${package.version}-${package.revision}_${deb.architecture}.deb</deb>
@@ -352,4 +285,61 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Internal profile: FOR INTERNAL USE ONLY - active if -DreleaseBuild is *not* specified. -->
+        <profile>
+            <id>debugBuild</id>
+            <activation>
+                <property>
+                    <name>!releaseBuild</name>
+                </property>
+            </activation>
+            <properties>
+                <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+                <package.snapshot>git${maven.build.timestamp}.${git.commit.id.abbrev}</package.snapshot>
+
+                <package.version>${release.version}~${package.snapshot}</package.version>
+                <package.revision>1</package.revision>
+            </properties>
+        </profile>
+        <!-- Internal profile: FOR INTERNAL USE ONLY - active if -DreleaseBuild *is* specified. -->
+        <profile>
+            <id>releaseBuild</id>
+            <activation>
+                <property>
+                    <name>releaseBuild</name>
+                </property>
+            </activation>
+            <properties>
+                <package.version>${release.version}</package.version>
+                <package.revision>1</package.revision>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>3.5.0</version>
+                        <executions>
+                            <execution>
+                                <id>enforce-no-snapshots</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireReleaseVersion>
+                                            <message>No snapshots allowed for release builds!</message>
+                                        </requireReleaseVersion>
+                                    </rules>
+                                    <fail>true</fail>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

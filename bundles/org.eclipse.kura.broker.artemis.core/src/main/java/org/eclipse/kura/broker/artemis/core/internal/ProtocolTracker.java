@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2017, 2020 Red Hat Inc and others
- * 
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *  Red Hat Inc
  *  Eurotech
@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import org.apache.activemq.artemis.spi.core.protocol.ProtocolManagerFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -39,28 +38,29 @@ public class ProtocolTracker {
     private final Map<String, Collection<ProtocolManagerFactory<?>>> protocols = new HashMap<>();
 
     @SuppressWarnings({"rawtypes", "checkstyle:lineLength"})
-    private final ServiceTrackerCustomizer<ProtocolManagerFactory, ProtocolManagerFactory> customizer = new ServiceTrackerCustomizer<ProtocolManagerFactory, ProtocolManagerFactory>() {
+    private final ServiceTrackerCustomizer<ProtocolManagerFactory, ProtocolManagerFactory> customizer =
+            new ServiceTrackerCustomizer<ProtocolManagerFactory, ProtocolManagerFactory>() {
 
-        @Override
-        public ProtocolManagerFactory addingService(final ServiceReference<ProtocolManagerFactory> reference) {
-            final ProtocolManagerFactory service = ProtocolTracker.this.context.getService(reference);
-            addProtocols(service);
-            return service;
-        }
+                @Override
+                public ProtocolManagerFactory addingService(final ServiceReference<ProtocolManagerFactory> reference) {
+                    final ProtocolManagerFactory service = ProtocolTracker.this.context.getService(reference);
+                    addProtocols(service);
+                    return service;
+                }
 
-        @Override
-        public void modifiedService(final ServiceReference<ProtocolManagerFactory> reference,
-                final ProtocolManagerFactory service) {
-        }
+                @Override
+                public void modifiedService(
+                        final ServiceReference<ProtocolManagerFactory> reference,
+                        final ProtocolManagerFactory service) {}
 
-        @Override
-        public void removedService(final ServiceReference<ProtocolManagerFactory> reference,
-                final ProtocolManagerFactory service) {
-            removeProtocols(service);
-            ProtocolTracker.this.context.ungetService(reference);
-        }
-
-    };
+                @Override
+                public void removedService(
+                        final ServiceReference<ProtocolManagerFactory> reference,
+                        final ProtocolManagerFactory service) {
+                    removeProtocols(service);
+                    ProtocolTracker.this.context.ungetService(reference);
+                }
+            };
 
     @SuppressWarnings("rawtypes")
     private final ServiceTracker<ProtocolManagerFactory, ProtocolManagerFactory> tracker;
@@ -111,8 +111,8 @@ public class ProtocolTracker {
         final Map<String, ProtocolManagerFactory<?>> result = new HashMap<>();
 
         for (final String required : requiredProtocols) {
-            final Collection<ProtocolManagerFactory<?>> factories = this.protocols.getOrDefault(required,
-                    Collections.emptyList());
+            final Collection<ProtocolManagerFactory<?>> factories =
+                    this.protocols.getOrDefault(required, Collections.emptyList());
             if (factories.isEmpty()) {
                 // return "unresolved"
                 return null;
@@ -155,6 +155,5 @@ public class ProtocolTracker {
             factories.remove(factory);
             return factories.isEmpty() ? null : factories;
         });
-
     }
 }

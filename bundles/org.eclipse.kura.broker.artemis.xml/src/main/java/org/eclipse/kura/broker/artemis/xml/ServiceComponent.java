@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2017, 2020 Red Hat Inc and others
- * 
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *  Red Hat Inc
  *  Eurotech
@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import org.eclipse.kura.broker.artemis.core.ServerConfiguration;
 import org.eclipse.kura.broker.artemis.core.ServerManager;
 import org.eclipse.kura.broker.artemis.core.UserAuthentication;
@@ -132,5 +131,4 @@ public class ServiceComponent implements ConfigurableComponent {
         }
         return requiredProtocols;
     }
-
 }
